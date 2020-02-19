@@ -8,7 +8,7 @@ public class MyMain
         int cont=1;
         while(cont==1)
         {
-            System.out.println("Welcome to DBC's Contact List App\nPress 1 to add a new contact\nPress 2 to view all contacts\nPress 3 to search for a contact\nPress 4 to delete a contact\nPress 5 to exit program\n");
+            System.out.println("\nWelcome to DBC's Contact List App\nPress 1 to add a new contact\nPress 2 to view all contacts\nPress 3 to search for a contact\nPress 4 to delete a contact\nPress 5 to exit program\n");
             int choice=sc.nextInt();
             switch(choice)
             {
@@ -51,7 +51,10 @@ public class MyMain
                         Collections.sort(ContactList.list);
                         break;
                 case 2:
-                        ContactList.viewAllContacts();
+						if(ContactList.list.size()==0)
+							System.out.println("Contact list empty!");
+						else
+							ContactList.viewAllContacts();
                         break;
                 case 3:
                             System.out.print("Enter name to search: ");
@@ -60,14 +63,19 @@ public class MyMain
                             ContactList.searchContact(nameToFind);
                             break;
                 case 4:
-                            System.out.println("Here are all your contacts: ");
-                             for(int i=0;i<ContactList.list.size();i++)
-                             {
-                                 System.out.println(""+(i+1)+". "+ContactList.list.get(i).getFirstName());
-                             }
-                             System.out.print("Press the number against the contact to delete it: ");
-                            int del=sc.nextInt();
-                            ContactList.deleteContact(del-1);
+							if(ContactList.list.size()==0)
+								System.out.println("Nothing to delete!");
+							else
+							{
+								System.out.println("Here are all your contacts: ");
+								for(int i=0;i<ContactList.list.size();i++)
+								{
+									System.out.println(""+(i+1)+". "+ContactList.list.get(i).getFirstName());
+								}
+								System.out.print("Press the number against the contact to delete it: ");
+								int del=sc.nextInt();
+								ContactList.deleteContact(del-1);
+							}
                             break;
                 case 5:
                             cont=0;
