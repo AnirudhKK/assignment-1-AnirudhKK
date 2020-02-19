@@ -1,5 +1,5 @@
 import java.util.*;
-public class Person
+public class Person implements Comparable<Person>
 {
 	private String firstName;
 	private String lastName;
@@ -45,15 +45,18 @@ public class Person
     public String toString()
     {
         String sen="";
-        sen+=("\n-------- * -------- * -------- * --------");
+        sen+=("-------- * -------- * -------- * --------");
         sen+=("\nFirst Name: "+firstName);
         sen+=("\nLast Name: "+lastName);
         if(phoneNumber.size()>1)
         {
             sen+=("\nContact Number(s): ");
-            for(String no:phoneNumber)
+            for(int i=0;i<phoneNumber.size();i++)
             {
-                sen+=(no+", ");
+				if(i==0)
+					sen+=(""+phoneNumber.get(i));
+				else
+                sen+=(", "+phoneNumber.get(i));
             }
         }
         else
@@ -64,5 +67,10 @@ public class Person
         sen+=("\nEmail Address: "+email);
         sen+=("\n-------- * -------- * -------- * --------");
         return sen;
+    }
+    @Override
+    public int compareTo(Person p)
+    {
+        return this.getFirstName().compareTo(p.getFirstName());
     }
 }

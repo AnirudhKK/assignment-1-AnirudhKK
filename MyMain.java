@@ -1,4 +1,4 @@
-import java.util.Scanner;
+import java.util.*;
 public class MyMain
 {
     public static void main(String []args)
@@ -21,14 +21,34 @@ public class MyMain
                         System.out.print("Last name: ");
                         String ln=sc.next();
                         System.out.println("");
+                        ArrayList<String> temp = new ArrayList<String>();
                         System.out.print("Contact Number: ");
-                        String no=sc.next();
+                        temp.add(sc.next());
+                        while(true)
+                        {
+                            System.out.print("Would you like to add another contact number? (y/n): ");
+                            char c=sc.next().charAt(0);
+                            if(c=='y')
+                            {
+                                System.out.print("Contact Number: ");
+                                temp.add(sc.next());
+                            }
+							else
+								break;
+						}
                         System.out.println("");
                         System.out.print("Email: ");
                         String e=sc.next();
-                        Person p=new Person(fn, ln, no, e);
+                        Person p=new Person(fn, ln, temp.get(0), e);
+						if(temp.size()>1)
+						{
+							for(int i=1;i<temp.size();i++)
+							{
+								p.addPhoneNumber(temp.get(i));
+							}
+						}
                         ContactList.addNewContact(p);
-                        System.out.println(p);
+                        Collections.sort(ContactList.list);
                         break;
                 case 2:
                         ContactList.viewAllContacts();
@@ -40,6 +60,21 @@ public class MyMain
                             ContactList.searchContact(nameToFind);
                             break;
                 case 4:
+                            System.out.println("Here are all your contacts: ");
+                             for(int i=0;i<ContactList.list.size();i++)
+                             {
+                                 System.out.println(""+(i+1)+". "+ContactList.list.get(i).getFirstName());
+                             }
+                             System.out.print("Press the number against the contact to delete it: ");
+                            int del=sc.nextInt();
+                            ContactList.deleteContact(del-1);
+                            break;
+                case 5:
+                            cont=0;
+                            System.out.println("Thank You");
+                            break;
+                default:
+                            System.out.println("Wrong choice entered. Try again!");
 
             }
     }

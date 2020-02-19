@@ -28,7 +28,12 @@ public class MyContacts
         if(match==0)
             System.out.println("NO RESULTS FOUND!");
         else
-            System.out.println(match+ "match found!");
+            System.out.println(match+ " match found!");
+    }
+    public void deleteContact(int index)
+    {
+        System.out.println(""+list.get(index).getFirstName()+"'s contact deleted!\n");
+        list.remove(index);
     }
 
 }
