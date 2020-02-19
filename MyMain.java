@@ -79,12 +79,17 @@ public class MyMain
 								}
 								System.out.print("Press the number against the contact to delete it: ");
 								int del=sc.nextInt();
+								while(del>ContactList.list.size())
+								{
+									System.out.println("Enter correct option!");
+									del=sc.nextInt();
+								}
 								ContactList.deleteContact(del-1);
 							}
                             break;
                 case 5:
                             cont=0;
-                            System.out.println("Thank You");
+                            System.out.println("Thank You for Using Anirudh's Contact App!");
                             break;
                 default:
                             System.out.println("Wrong choice entered. Try again!");
