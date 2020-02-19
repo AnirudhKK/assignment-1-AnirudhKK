@@ -1,7 +1,8 @@
+import java.util.*;
 public class MyContacts
 {
     public ArrayList<Person> list = new ArrayList<Person>();
-    public addNewContact(Person p)
+    public void addNewContact(Person p)
     {
         list.add(p);
     }
@@ -13,7 +14,7 @@ public class MyContacts
             System.out.println(per);
         }
     }
-    public searchContact(String nameToSearch)
+    public void searchContact(String nameToSearch)
     {
         int match=0;
         for(Person per:list)
@@ -24,7 +25,10 @@ public class MyContacts
                 System.out.println(per);
             }
         }
-        System.out.println(match+ "match found!");
+        if(match==0)
+            System.out.println("NO RESULTS FOUND!");
+        else
+            System.out.println(match+ "match found!");
     }
 
 }

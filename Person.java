@@ -1,3 +1,4 @@
+import java.util.*;
 public class Person
 {
 	private String firstName;
@@ -43,22 +44,25 @@ public class Person
     @Override
     public String toString()
     {
-        System.out.println("-------- * -------- * -------- * --------");
-        System.out.println("First Name: "+firstName);
-        System.out.println("Last Name: "+lastName);
+        String sen="";
+        sen+=("\n-------- * -------- * -------- * --------");
+        sen+=("\nFirst Name: "+firstName);
+        sen+=("\nLast Name: "+lastName);
         if(phoneNumber.size()>1)
         {
-            System.out.println("Contact Number(s): ");
+            sen+=("\nContact Number(s): ");
             for(String no:phoneNumber)
             {
-                System.out.print(no+", ");
+                sen+=(no+", ");
             }
         }
         else
         {
-            System.out.println("Contact Number: ");
-                System.out.print(phoneNumber.get(0));
+            sen+=("\nContact Number: ");
+                sen+=(phoneNumber.get(0));
         }
-        System.out.println("Email Address: "+email);
+        sen+=("\nEmail Address: "+email);
+        sen+=("\n-------- * -------- * -------- * --------");
+        return sen;
     }
 }
