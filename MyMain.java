@@ -33,8 +33,13 @@ public class MyMain
                                 System.out.print("Contact Number: ");
                                 temp.add(sc.next());
                             }
-							else
+							else if(c=='n')
 								break;
+							else
+							{
+								System.out.println("Enter correct choice (y/n)!");
+								continue;
+							}
 						}
                         System.out.println("");
                         System.out.print("Email: ");
