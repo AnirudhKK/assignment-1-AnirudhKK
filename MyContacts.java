@@ -32,13 +32,8 @@ public class MyContacts
     }
     public void deleteContact(int index)
     {
-		if(list.size()==0)
-			System.out.println("Nothing to delete!");
-		else
-		{
         System.out.println(""+list.get(index).getFirstName()+"'s contact deleted!\n");
         list.remove(index);
-		}
     }
 
 }

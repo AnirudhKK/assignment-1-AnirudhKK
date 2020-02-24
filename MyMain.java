@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.regex.*;
 public class MyMain
 {
     public static void main(String []args)
@@ -23,7 +24,14 @@ public class MyMain
                         System.out.println("");
                         ArrayList<String> temp = new ArrayList<String>();
                         System.out.print("Contact Number: ");
-                        temp.add(sc.next());
+                        String numberHere=sc.next();
+                        String regxMobile="(\\+91|0)?\\d(6789)?\\w{9}";
+                        while(Pattern.compile(regxMobile).matcher(numberHere).matches()!=true)
+                        {
+                            System.out.println("Wrong number entered! Try again!");
+                            numberHere=sc.next();
+                        }
+                        temp.add(numberHere);
                         while(true)
                         {
                             System.out.print("Would you like to add another contact number? (y/n): ");
@@ -31,7 +39,14 @@ public class MyMain
                             if(c=='y')
                             {
                                 System.out.print("Contact Number: ");
-                                temp.add(sc.next());
+                                numberHere=sc.next();
+                                while(Pattern.compile(regxMobile).matcher(numberHere).matches()!=true)
+                                {
+                                    System.out.println("Wrong mobile number entered! Try again!");
+                                    numberHere=sc.next();
+                                }
+                                temp.add(numberHere);
+
                             }
 							else if(c=='n')
 								break;
@@ -44,14 +59,13 @@ public class MyMain
                         System.out.println("");
                         System.out.print("Email: ");
                         String e=sc.next();
-                        Person p=new Person(fn, ln, temp.get(0), e);
-						if(temp.size()>1)
-						{
-							for(int i=1;i<temp.size();i++)
-							{
-								p.addPhoneNumber(temp.get(i));
-							}
-						}
+                        String regxEmail="\\w+@\\w+\\.\\w{2,}";
+                        while(Pattern.compile(regxEmail).matcher(e).matches()!=true)
+                        {
+                            System.out.println("Invalid email! Try again: ");
+                            e=sc.next();
+                        }
+                        Person p=new Person(fn, ln, temp, e);
                         ContactList.addNewContact(p);
                         Collections.sort(ContactList.list);
                         break;

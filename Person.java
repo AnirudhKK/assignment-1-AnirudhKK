@@ -5,11 +5,11 @@ public class Person implements Comparable<Person>
 	private String lastName;
 	private ArrayList<String> phoneNumber = new ArrayList<String>();
 	private String email;
-    public Person(String firstName, String lastName, String number, String email)
+    public Person(String firstName, String lastName, ArrayList<String> number, String email)
     {
         this.firstName=firstName;
         this.lastName=lastName;
-        phoneNumber.add(number);
+        phoneNumber=number;
         this.email=email;
     }
 
